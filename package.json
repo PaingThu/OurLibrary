@@ -1,7 +1,7 @@
 {
-  "name": "mydailyactivities",
+  "name": "Our Library",
   "version": "1.0.0",
-  "description": "Our daily activities",
+  "description": "Our library",
   "main": "index.html",
   "scripts": {
     "test": "echo 'Open your browser at localhost:8080' && docker-compose up",
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PaingThu/our-daily-activities.git"
+    "url": "git+https://github.com/PaingThu/ourlibrary.git"
   },
   "keywords": [],
   "author": "Paing Thu",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/PaingThu/our-daily-activities/issues"
+    "url": "https://github.com/PaingThu/ourlibrary/issues"
   },
-  "homepage": "https://github.com/PaingThu/our-daily-activities",
+  "homepage": "https://github.com/PaingThu/ourlibrary",
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "vite": "^8.0.2"

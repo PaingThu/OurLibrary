@@ -3,13 +3,14 @@ import actomic from '/assets/images/actomic.avif';
 let books = [
     {
         id: 1,
-        title: "Project Hail Mary",
-        author: "Andy Weir",
-        dateRead: "2023-11-15",
+        title: "Kazu Language",
+        author: "Kazu",
+        dateRead: "2026-04-05",
         rating: 5,
-        status: "Finished",
-        notes: "An incredible survival story. Couldn't put it down!",
-        cover: actomic
+        status: "Reading",
+        notes: "Learning Kazu Language.",
+        cover: actomic,
+        url: "/kazu-language/"
     },
     {
         id: 2,
@@ -29,7 +30,7 @@ let books = [
         rating: 5,
         status: "Reading",
         notes: "Loving the narrative structure so far.",
-        cover: actomicC
+        cover: actomic
     }
 ];
 
@@ -49,8 +50,8 @@ function renderBooks() {
     const selectedStatus = statusFilter.value;
 
     const filtered = books.filter(book => {
-        const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
-                                book.author.toLowerCase().includes(searchTerm);
+        const matchesSearch = book.title.toLowerCase().includes(searchTerm) ||
+            book.author.toLowerCase().includes(searchTerm);
         const matchesStatus = selectedStatus === 'All' || book.status === selectedStatus;
         return matchesSearch && matchesStatus;
     });
@@ -65,19 +66,20 @@ function renderBooks() {
     bookGrid.innerHTML = filtered.map(book => `
         <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 flex flex-col">
             <div class="relative h-48 overflow-hidden">
-                <img 
-                    src="${book.cover}" 
-                    alt="${book.title}" 
-                    crossorigin="anonymous"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='https://images.unsplash.com/photo-1543004471-da7a9601a301?auto=format&fit=crop&q=80&w=400';}"
-                />
+                <a href="${book.url}">
+                    <img 
+                        src="${book.cover}" 
+                        alt="${book.title}" 
+                        crossorigin="anonymous"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='https://images.unsplash.com/photo-1543004471-da7a9601a301?auto=format&fit=crop&q=80&w=400';}"
+                    />
+                </a>
                 <div class="absolute top-2 right-2">
-                    <span class="px-3 py-1 rounded-full text-xs font-semibold shadow-sm ${
-                        book.status === 'Finished' ? 'bg-emerald-100 text-emerald-700' : 
-                        book.status === 'Reading' ? 'bg-amber-100 text-amber-700' : 
-                        'bg-slate-100 text-slate-700'
-                    }">
+                    <span class="px-3 py-1 rounded-full text-xs font-semibold shadow-sm ${book.status === 'Finished' ? 'bg-emerald-100 text-emerald-700' :
+            book.status === 'Reading' ? 'bg-amber-100 text-amber-700' :
+                'bg-slate-100 text-slate-700'
+        }">
                         ${book.status}
                     </span>
                 </div>
@@ -139,7 +141,7 @@ modalOverlay.addEventListener('click', (e) => {
 
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const newBook = {
         id: Date.now(),
         title: document.getElementById('form-title').value,

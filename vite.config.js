@@ -21,8 +21,8 @@ export default defineConfig({
                 admin: resolve(__dirname, 'src/admin/index.html'),
                 'admin/login': resolve(__dirname, 'src/admin/login/index.html'),
                 'admin/library': resolve(__dirname, 'src/admin/library/index.html'),
-                'our-library': resolve(__dirname, 'src/our-library/index.html'),
-                // Add more here, e.g., login: resolve(__dirname, 'public/login.html')
+                'our-library': resolve(__dirname, 'src/index.html'),
+                'kazu-language': resolve(__dirname, 'src/kazu-language/index.html')
             },
         },
     },
